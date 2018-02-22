@@ -1,0 +1,23 @@
+.center {
+  text-align: center;
+}
+
+.test {
+  list-style-type: none;
+  width: 95%;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-width: 0.2em;
+  border-style: solid;
+  border-radius: 0.3em;
+}
+
+.test-passed {
+  background-color: lightgreen;
+  border-color: green;
+}
+
+.test-failed {
+  background-color: lightpink;
+  border-color: red;
+}
