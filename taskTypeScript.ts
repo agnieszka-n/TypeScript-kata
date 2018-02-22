@@ -1,21 +1,25 @@
-function assert(title: string, testExpression: boolean) {
+function add(a: number, b: number) {
+  return a + b;
+}
+
+const correctExpected = 5;
+const actual = add(2, 3);
+
+assert('Passing test', correctExpected === actual, `Expected ${correctExpected}, but was: ${actual}.`);
+
+function assert(title: string, testExpression: boolean, failMessage?: string) {
   const testsRoot = document.getElementById('testResults');
   const currentTestElement = document.createElement('li');
   currentTestElement.classList.add('test');
-  currentTestElement.innerText = title;
 
   testsRoot.appendChild(currentTestElement);
 
   if (testExpression) {
+    currentTestElement.innerText = title;
     currentTestElement.classList.add('test-passed');
   }
   else {
+    currentTestElement.innerText = failMessage ? failMessage : title;
     currentTestElement.classList.add('test-failed');
   }
 }
-
-const x: number = 1, y: number = 4;
-
-assert('1 > 4', x > y);
-assert('1 === 4', x === y);
-assert('1 < 4', x < y);
