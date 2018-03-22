@@ -6,7 +6,12 @@ function arrayItemsEqual<T>(array: T[], expectedItems: T[]) {
     return false;
 
   for (let i = 0; i < array.length; i++) {
-    if (array[i] !== expectedItems[i])
+    if (array[i] instanceof Array) {
+      if (!arrayItemsEqual(array[i], expectedItems[i])) {
+        return false;
+      }
+    }
+    else if (array[i] !== expectedItems[i])
       return false;
   }
 
