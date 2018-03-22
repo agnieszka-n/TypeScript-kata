@@ -1,3 +1,17 @@
+interface TestCase {
+  params: any[];
+  expectedResult: any;
+}
+
+function executeTestCases(testCases: TestCase[], functionUnderTest: Function, testCallback: (actualResult: any, expectedResult: any) => boolean) {
+  for (let i = 0; i < testCases.length; i++) {
+    const testCase = testCases[i];
+    const actualResult = functionUnderTest.apply(undefined, testCase.params);
+    const title = `${functionUnderTest.name} (${i + 1}), params: ${testCase.params}`;
+    assert(title, testCallback(actualResult, testCase.expectedResult), `${title} - Expected: ${testCase.expectedResult}, but was: ${actualResult}.`);
+  }
+}
+
 function arrayItemsEqual(array: any[], expectedItems: any[]): boolean {
   if (!array || !expectedItems)
     return false;
