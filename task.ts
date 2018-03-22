@@ -1,4 +1,4 @@
-function arrayItemsEqual<T>(array: T[], expectedItems: T[]) {
+function arrayItemsEqual(array: any[], expectedItems: any[]): boolean {
   if (!array || !expectedItems)
     return false;
 
