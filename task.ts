@@ -3,11 +3,12 @@ interface TestCase {
   expectedResult: any;
 }
 
-function executeTestCases(testCases: TestCase[], functionUnderTest: Function, testCallback: (actualResult: any, expectedResult: any) => boolean) {
+function executeTestCases(testCases: TestCase[], functionUnderTest: Function, testCallback: (actualResult: any, expectedResult: any) => boolean, titlePrefix?: string) {
   for (let i = 0; i < testCases.length; i++) {
     const testCase = testCases[i];
     const actualResult = functionUnderTest.apply(undefined, testCase.params);
-    const title = `${functionUnderTest.name} (${i + 1}), params: ${testCase.params}`;
+    const prefix = titlePrefix ? titlePrefix : `${functionUnderTest.name}`;
+    const title = `${prefix} (${i + 1}), params: ${testCase.params}`;
     assert(title, testCallback(actualResult, testCase.expectedResult), `${title} - Expected: ${testCase.expectedResult}, but was: ${actualResult}.`);
   }
 }
