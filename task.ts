@@ -14,6 +14,9 @@ function executeTestCases(testCases: TestCase[], functionUnderTest: Function, te
 }
 
 function arrayItemsEqual(array: any[], expectedItems: any[]): boolean {
+  if (!array && !expectedItems)
+    return true;
+
   if (!array || !expectedItems)
     return false;
 
