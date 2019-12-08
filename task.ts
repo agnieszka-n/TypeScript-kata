@@ -9,11 +9,11 @@ function executeTestCases(testCases: TestCase[], functionUnderTest: Function, te
     const actualResult = functionUnderTest.apply(undefined, testCase.params);
     const prefix = titlePrefix ? titlePrefix : `${functionUnderTest.name}`;
     const title = `${prefix} (${i + 1}), params: ${testCase.params}`;
-    assert(title, testCallback(actualResult, testCase.expectedResult), `${title} - Expected: ${testCase.expectedResult}, but was: ${actualResult}.`);
+    assertTrue(title, testCallback(actualResult, testCase.expectedResult), `${title} - Expected: ${testCase.expectedResult}, but was: ${actualResult}.`);
   }
 }
 
-function arrayItemsEqual(array: any[], expectedItems: any[]): boolean {
+function areArrayItemsEqual(array: any[], expectedItems: any[]): boolean {
   if (!array && !expectedItems)
     return true;
 
@@ -25,7 +25,7 @@ function arrayItemsEqual(array: any[], expectedItems: any[]): boolean {
 
   for (let i = 0; i < array.length; i++) {
     if (array[i] instanceof Array) {
-      if (!arrayItemsEqual(array[i], expectedItems[i])) {
+      if (!areArrayItemsEqual(array[i], expectedItems[i])) {
         return false;
       }
     }
@@ -36,7 +36,7 @@ function arrayItemsEqual(array: any[], expectedItems: any[]): boolean {
   return true;
 }
 
-function assert(title: string, testExpression: boolean, failMessage?: string) {
+function assertTrue(title: string, testExpression: boolean, failMessage?: string) {
   const testsRoot = document.getElementById('testResults');
   const currentTestElement = document.createElement('li');
   currentTestElement.classList.add('test');
@@ -51,4 +51,8 @@ function assert(title: string, testExpression: boolean, failMessage?: string) {
     currentTestElement.innerText = failMessage ? failMessage : title;
     currentTestElement.classList.add('test-failed');
   }
+}
+
+function assertFalse(title: string, testExpression: boolean, failMessage?: string) {
+  assertTrue(title, !testExpression, failMessage);
 }
