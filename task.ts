@@ -58,3 +58,15 @@ function assertTrue(title: string, testExpression: boolean, failMessage?: string
 function assertFalse(title: string, testExpression: boolean, failMessage?: string) {
   assertTrue(title, !testExpression, failMessage);
 }
+
+function assertEqual(title: string, first: any, second: any) {
+  const actualTitle = title ? title : `${first} === ${second}`;
+
+  assertTrue(actualTitle, first === second, `${actualTitle} - Expected ${first} to equal ${second}.`);
+}
+
+function assertArrayItemsEqual(title: string, first: any[], second: any[]) {
+  const actualTitle = title ? title : `${first} === ${second}`;
+
+  assertTrue(actualTitle, areArrayItemsEqual(first, second), `${actualTitle} - Expected [${first}] to equal [${second}].`);
+}
