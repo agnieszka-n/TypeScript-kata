@@ -1,3 +1,5 @@
+/// <reference path="./areArrayItemsEqual.tests.ts" />
+
 interface TestCase {
   params: any[];
   expectedResult: any;
