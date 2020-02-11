@@ -1,4 +1,4 @@
-/// <reference path="./task.ts" />
+/// <reference path="./testing-environment.ts" />
 
 let result = areArrayItemsEqual([true, false], [true, false]);
 assertTrue('areArrayItemsEqual: should accept booleans', result);
