@@ -1,1 +1,3 @@
-/// <reference path="./areArrayItemsEqual.tests.ts" />
+import * as tests from './areArrayItemsEqual.tests';
+
+tests.executeTests();

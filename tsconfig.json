@@ -1,15 +1,10 @@
 {
-  "compileOnSave": true,
   "compilerOptions": {
-    "module": "system",
     "noImplicitAny": false,
+    "module": "es6",
+    "target": "es5",
     "removeComments": true,
     "preserveConstEnums": true,
-    "sourceMap": true,
-    "target": "es6",
-    "outFile": "dist/all.js"
-  },
-  "include": [
-    "task.ts"
-  ]
+    "sourceMap": true
+  }
 }
