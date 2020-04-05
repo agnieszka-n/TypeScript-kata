@@ -1,3 +1,5 @@
+import { Assert } from '../testing-environment';
+
 export class G964 {
   public static ann(n: number): number[] {
     const annCache = [1];
@@ -39,12 +41,10 @@ export class G964 {
   }
 }
 
-/*
-
-assertArrayItemsEqual('John(11)', G964.john(11), [0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6]);
-assertArrayItemsEqual('Ann(6)', G964.ann(6), [1, 1, 2, 2, 3, 3]);
-assertEqual('Sum John(75)', G964.sumJohn(75), 1720);
-assertEqual('Sum Ann(150)', G964.sumAnn(150), 6930);
-assertEqual('Sum Ann(115)', G964.sumAnn(115), 4070);
-
-*/
+export function executeTests() {
+  Assert.assertArrayItemsEqual('John(11)', G964.john(11), [0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6]);
+  Assert.assertArrayItemsEqual('Ann(6)', G964.ann(6), [1, 1, 2, 2, 3, 3]);
+  Assert.assertEqual('Sum John(75)', G964.sumJohn(75), 1720);
+  Assert.assertEqual('Sum Ann(150)', G964.sumAnn(150), 6930);
+  Assert.assertEqual('Sum Ann(115)', G964.sumAnn(115), 4070);
+}

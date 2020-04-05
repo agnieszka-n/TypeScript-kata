@@ -1,3 +1,5 @@
+import { executeTestCases, Assert, TestCase } from "../testing-environment";
+
 export class G964 {
 
   public static decompose = (n) => {
@@ -42,31 +44,29 @@ export class G964 {
   }
 }
 
-/*
+export function executeTests() {
+  const testCases: TestCase[] = [
+    {
+      params: [11],
+      expectedResult: [1, 2, 4, 10]
+    },
+    {
+      params: [50],
+      expectedResult: [1, 3, 5, 8, 49]
+    },
+    {
+      params: [44],
+      expectedResult: [2, 3, 5, 7, 43]
+    },
+    {
+      params: [7],
+      expectedResult: [2, 3, 6]
+    },
+    {
+      params: [4],
+      expectedResult: null
+    }
+  ];
 
-const testCases: TestCase[] = [
-  {
-    params: [11],
-    expectedResult: [1, 2, 4, 10]
-  },
-  {
-    params: [50],
-    expectedResult: [1, 3, 5, 8, 49]
-  },
-  {
-    params: [44],
-    expectedResult: [2, 3, 5, 7, 43]
-  },
-  {
-    params: [7],
-    expectedResult: [2, 3, 6]
-  },
-  {
-    params: [4],
-    expectedResult: null
-  }
-];
-
-executeTestCases(testCases, G964.decompose, (actual, expected) => arrayItemsEqual(actual, expected), 'G964.decompose');
-
-*/
+  executeTestCases(testCases, G964.decompose, (actual, expected) => Assert.areArrayItemsEqual(actual, expected), 'decompose');
+}

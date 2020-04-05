@@ -1,3 +1,5 @@
+import { executeTestCases } from "../testing-environment";
+
 export class G964 {
 
   public static convertFrac = (lst) => {
@@ -35,19 +37,17 @@ export class G964 {
   }
 }
 
-/*
+export function executeTests() {
+  const testCases = [
+    {
+      params: [[[1, 2], [1, 3], [1, 4]]],
+      expectedResult: "(6,12)(4,12)(3,12)"
+    },
+    {
+      params: [[[69, 130], [87, 1310], [3, 4]]],
+      expectedResult: "(18078,34060)(2262,34060)(25545,34060)"
+    }
+  ];
 
-const testCases = [
-  {
-    params: [[[1, 2], [1, 3], [1, 4]]],
-    expectedResult: "(6,12)(4,12)(3,12)"
-  },
-  {
-    params: [[[69, 130], [87, 1310], [3, 4]]],
-    expectedResult: "(18078,34060)(2262,34060)(25545,34060)"
-  }
-];
-
-executeTestCases(testCases, G964.convertFrac, (actual, expected) => actual === expected);
-
-*/
+  executeTestCases(testCases, G964.convertFrac, (actual, expected) => actual === expected, 'convertFrac');
+}

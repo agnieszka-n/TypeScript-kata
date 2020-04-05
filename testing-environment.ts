@@ -1,14 +1,13 @@
-interface TestCase {
+export interface TestCase {
   params: any[];
   expectedResult: any;
 }
 
-export function executeTestCases(testCases: TestCase[], functionUnderTest: Function, testCallback: (actualResult: any, expectedResult: any) => boolean, titlePrefix?: string) {
+export function executeTestCases(testCases: TestCase[], functionUnderTest: Function, testCallback: (actualResult: any, expectedResult: any) => boolean, titlePrefix: string) {
   for (let i = 0; i < testCases.length; i++) {
     const testCase = testCases[i];
     const actualResult = functionUnderTest.apply(undefined, testCase.params);
-    const prefix = titlePrefix ? titlePrefix : `${functionUnderTest.toString()}`;
-    const title = `${prefix} (${i + 1}), params: ${testCase.params}`;
+    const title = `${titlePrefix} (${i + 1}), params: ${testCase.params}`;
     Assert.assertTrue(title, testCallback(actualResult, testCase.expectedResult), `${title} - Expected: ${testCase.expectedResult}, but was: ${actualResult}.`);
   }
 }

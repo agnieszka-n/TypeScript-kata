@@ -1,3 +1,3 @@
-import * as tests from './areArrayItemsEqual.tests';
+import * as johnAnn from './tasks-done/5kyu_john-and-ann-sign-up-for-codewars';
 
-tests.executeTests();
+johnAnn.executeTests();
