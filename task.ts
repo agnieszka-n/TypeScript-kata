@@ -1,3 +1,3 @@
-import * as johnAnn from './tasks-done/5kyu_john-and-ann-sign-up-for-codewars';
+import * as arrayAssertions from './array-assertions';
 
-johnAnn.executeTests();
+arrayAssertions.executeTests();

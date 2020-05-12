@@ -1,4 +1,5 @@
-import { executeTestCases, Assert, TestCase } from "../testing-environment";
+import { executeTestCases, TestCase } from "../testing-environment";
+import { ArrayAssertions } from "../array-assertions";
 
 export class G964 {
 
@@ -68,5 +69,5 @@ export function executeTests() {
     }
   ];
 
-  executeTestCases(testCases, G964.decompose, (actual, expected) => Assert.areArrayItemsEqual(actual, expected), 'decompose');
+  executeTestCases(testCases, G964.decompose, (actual, expected) => ArrayAssertions.areArrayItemsEqual(actual, expected), 'decompose');
 }

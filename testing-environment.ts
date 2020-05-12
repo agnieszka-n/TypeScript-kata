@@ -1,3 +1,5 @@
+import { ArrayAssertions } from "./array-assertions";
+
 export interface TestCase {
   params: any[];
   expectedResult: any;
@@ -13,29 +15,6 @@ export function executeTestCases(testCases: TestCase[], functionUnderTest: Funct
 }
 
 export class Assert {
-  static areArrayItemsEqual(array: any[], expectedItems: any[]): boolean {
-    if (!array && !expectedItems)
-      return true;
-
-    if (!array || !expectedItems)
-      return false;
-
-    if (array.length !== expectedItems.length)
-      return false;
-
-    for (let i = 0; i < array.length; i++) {
-      if (array[i] instanceof Array) {
-        if (!Assert.areArrayItemsEqual(array[i], expectedItems[i])) {
-          return false;
-        }
-      }
-      else if (array[i] !== expectedItems[i])
-        return false;
-    }
-
-    return true;
-  }
-
   static assertTrue(title: string, testExpression: boolean, failMessage?: string) {
     const testsRoot = document.getElementById('testResults');
     const currentTestElement = document.createElement('li');
@@ -66,6 +45,6 @@ export class Assert {
   static assertArrayItemsEqual(title: string, first: any[], second: any[]) {
     const actualTitle = title ? title : `${first} === ${second}`;
 
-    Assert.assertTrue(actualTitle, Assert.areArrayItemsEqual(first, second), `${actualTitle} - Expected [${first}] to equal [${second}].`);
+    Assert.assertTrue(actualTitle, ArrayAssertions.areArrayItemsEqual(first, second), `${actualTitle} - Expected [${first}] to equal [${second}].`);
   }
 }

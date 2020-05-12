@@ -1,4 +1,5 @@
-import { executeTestCases, Assert } from "../testing-environment";
+import { executeTestCases } from "../testing-environment";
+import { ArrayAssertions } from "../array-assertions";
 
 export class G964 {
   public static mix = (s1, s2) => {
@@ -88,5 +89,5 @@ export function executeTests() {
     }
   ];
 
-  executeTestCases(testCases, G964.mix, (actual, expected) => Assert.areArrayItemsEqual(actual, expected), 'mix');
+  executeTestCases(testCases, G964.mix, (actual, expected) => ArrayAssertions.areArrayItemsEqual(actual, expected), 'mix');
 }

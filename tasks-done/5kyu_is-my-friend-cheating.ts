@@ -1,4 +1,5 @@
-import { Assert, executeTestCases, TestCase } from "../testing-environment";
+import { executeTestCases, TestCase } from "../testing-environment";
+import { ArrayAssertions } from "../array-assertions";
 
 export class G964 {
   public static removeNb(n: number): number[][] {
@@ -41,5 +42,5 @@ export function executeTests() {
     }
   ];
 
-  executeTestCases(testCases, G964.removeNb, (actual, expected) => Assert.areArrayItemsEqual(actual, expected), 'removeNb');
+  executeTestCases(testCases, G964.removeNb, (actual, expected) => ArrayAssertions.areArrayItemsEqual(actual, expected), 'removeNb');
 }
