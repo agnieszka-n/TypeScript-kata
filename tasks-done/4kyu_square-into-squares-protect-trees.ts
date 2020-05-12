@@ -4,6 +4,7 @@ import { ArrayAssertions } from "../array-assertions";
 export class G964 {
 
   public static decompose = (n) => {
+    // Numbers are tested and stored in a sequence in the decreasing order, they'll be reversed at the end.
     let sequence: number[] = [];
     let squaresSumToDecompose = n * n;
     let startNumber = n - 1;
@@ -14,6 +15,7 @@ export class G964 {
       if (nextNumberInSequence > startNumber)
         nextNumberInSequence = startNumber;
 
+      // There is still something to decompose, but we've reached 1 in testing numbers.
       if (nextNumberInSequence === 0) {
         let lastNumberInSequence: number;
 
